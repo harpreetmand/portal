@@ -1,0 +1,27 @@
+// @import './reset';
+// @import './bootstrap';
+// @import 'stylesheets/bootstrap';
+
+$red: #ed3124;
+$blue: #232d65;
+$pladis: #CB002E;
+
+$font-color: #231f20;
+.cf{
+    clear: both;
+}
+.red{
+    color: $red;
+}
+.pl0{
+    padding-left: 0px
+}
+@mixin btn-pladis($color) {
+    background-color: $color;
+    line-height: .9;
+    border-radius: 0;
+}
+@mixin btnBorder($color) {
+    border: 2px solid $color;
+    padding: 2px;
+}

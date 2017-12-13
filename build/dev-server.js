@@ -64,6 +64,8 @@ app.use(require('connect-history-api-fallback')())
 // serve webpack bundle output
 app.use(devMiddleware)
 
+app.use('/api', proxyMiddleware({ target: 'http://localhost/star-brands-portal/public/', changeOrigin: true }))
+app.use('/assets', proxyMiddleware({ target: 'http://localhost/star-brands-portal/public/', changeOrigin: true, pathRewrite: {'^/assets' : ''} }))
 // serve pure static assets
 const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
