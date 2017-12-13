@@ -27,6 +27,11 @@ export const loadProducts = ({commit}, g) => {
         .then(data => {
             const products = data
             commit('SET_PRODUCTS', products)
+        }).catch(function (error) {
+            // window.location.href = '/'
+            if (error.status === 401) {
+                commit('LOGOUT')
+            }
         })
 }
 export const searchFor = ({commit}, g) => {
@@ -35,6 +40,10 @@ export const searchFor = ({commit}, g) => {
         .then(data => {
             const products = data
             commit('SEARCH_RESULTS', products)
+        }).catch(function (e) {
+            if (e.status === 422) {
+                commit('SEARCH_RESULTS', '')
+            }
         })
 }
 

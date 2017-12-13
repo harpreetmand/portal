@@ -34,7 +34,8 @@ const mutations = {
         state.isLoggedIn = false
         console.log('user now logged out')
     },
-    'SEARCH_RESULTS' (state, products) {        
+    'SEARCH_RESULTS' (state, products) {
+        state.searchResults = products
         console.log(products)
     }
 }
@@ -53,6 +54,9 @@ const getters = {
     },
     isLoggedIn (state) {
         return state.isLoggedIn
+    },
+    getSearchResult (state) {
+        return state.searchResults
     }
 }
 export default {

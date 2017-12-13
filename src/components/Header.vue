@@ -3,22 +3,27 @@
         <router-link to="/" class="pull-right">Home</router-link>
         <img src="../assets/imgs/star-brands.png" class="img-resposnive col-xs-3">
         <div class="cf"></div>
-        <div class="row">
-            <div class="col-sm-3 bar">
-                <div class="input-group">
-                <input type="text" class="form-control SearchBar" placeholder="Search for..." v-model="search" @keyup="searchChanged">
-                <span class="input-group-btn">
-                    <button class="btn btn-defaul SearchButton" type="button">
-                        <span class="glyphicon glyphicon-search SearchIcon" ></span>
 
-                    </button>
-                </span>
+        <div class="redbar">
+                <div class="input-group">
+                    <input type="text" class="form-control SearchBar" placeholder="Search for..." v-model="search" @keyup="searchChanged">
+                    <span class="input-group-btn">
+                        <button class="btn btn-defaul SearchButton" type="button">
+                            <span class="glyphicon glyphicon-search SearchIcon" ></span>
+                        </button>
+                    </span>
                 </div>
-{{search}}
-            </div><!-- /.col-lg-6 -->
-            
-            <div class="col-sm-9 pull-right bar logout">logout</div>
-        </div><!-- /.row -->
+                <span class="logout">logout</span>
+        </div>
+
+                <div class="search">
+                    <ol>
+                        <li v-for="(product, index) in searchResult.products" :key="index">
+                            {{product.name}}
+                        </li>
+                    </ol>
+                </div>
+  
     </div>
 </template>
 <script>
@@ -31,8 +36,7 @@ export default {
     },
     computed:{
         searchResult(){
-
-            console.log('search')
+            return this.$store.getters.getSearchResult      
         }
     },
     methods:{
@@ -69,6 +73,19 @@ export default {
         color:#fff;
     
     }
+    .redbar{
+        background-color:#ED1C24;
+        position: relative;
+        .input-group{
+            width: 20%;
+            min-width: 300px;
+        }
+        .logout{
+            position: absolute;
+            top: 0px;
+            right: 10px;
+        }
+    }
     .SearchButton
     {
         background-color:#ED1C24;
@@ -81,6 +98,6 @@ export default {
         padding-top: 7px;
     }
     .SearchBar{
-
+        
     }
 </style>
