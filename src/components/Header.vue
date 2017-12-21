@@ -63,11 +63,7 @@ export default {
         border-top: 5px solid $red;
         padding-top: 10px;
     }
-    .pull-right{
-        float: right;
-        padding-right: 10px;
-        text-align: right;
-    }
+
     .SearchIcon
     {
         color:#fff;
